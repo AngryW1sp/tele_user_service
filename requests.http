@@ -1,0 +1,12 @@
+### upsert user
+POST http://127.0.0.1:8001/internal/users/upsert-telegram
+Content-Type: application/json
+
+{
+  "telegram_user_id": 123456,
+  "telegram_chat_id": 654321,
+  "timezone": "Europe/Moscow"
+}
+
+### get by telegram id
+GET http://127.0.0.1:8001/internal/users/by-telegram/123456
