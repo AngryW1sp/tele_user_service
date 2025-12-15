@@ -1,0 +1,41 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {"name": "FastAPI (dev, reload)",
+     "type":"debugpy",
+     "request":"launch",
+     "module": "uvicorn",
+     "args": [
+        "app.main:app",
+        "--reload",
+        "--port",
+        "8001"
+     ],
+     "envFile": "${workspaceFolder}/.env",
+     "preLaunchTask": "docker:up"
+    },
+    {"name": "FastAPI (dev)",
+     "type":"debugpy",
+     "request":"launch",
+     "module": "uvicorn",
+     "args": [
+        "app.main:app",
+        "--port",
+        "8001"
+     ],
+     "envFile": "${workspaceFolder}/.env",
+     "preLaunchTask": "docker:up"
+    },
+    {
+      "name": "Pytest (all)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["-q"],
+      "envFile": "${workspaceFolder}/.env.test",
+      "preLaunchTask": "docker:up"
+    }
+
+
+  ]
+}

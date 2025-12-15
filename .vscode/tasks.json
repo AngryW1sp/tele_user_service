@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "docker:up",
+      "type": "shell",
+      "command": "docker",
+      "args": ["compose", "up", "-d"],
+      "problemMatcher": []
+    },
+    {
+      "label": "docker:down",
+      "type": "shell",
+      "command": "docker",
+      "args": ["compose", "down"],
+      "problemMatcher": []
+    },
+    {
+      "label": "lint",
+      "type": "shell",
+      "command": "poetry",
+      "args": ["run", "ruff", "check", "."],
+      "group": "build"
+    },
+    {
+      "label": "format",
+      "type": "shell",
+      "command": "poetry",
+      "args": ["run", "black", "."],
+      "group": "build"
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "poetry",
+      "args": ["run", "pytest"],
+      "group": "test"
+    }
+  ]
+}

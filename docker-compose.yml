@@ -1,0 +1,18 @@
+services:
+  
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+  adminer:
+    image: adminer
+    container_name: habit_adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+    - redis_data:/data
+volumes:
+  postgres_data:
+  redis_data:
