@@ -6,19 +6,19 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
-import pytest
+import pytest # noqa: E402
 
-from httpx import AsyncClient, ASGITransport
-from sqlalchemy.ext.asyncio import (
+from httpx import AsyncClient, ASGITransport # noqa: E402
+from sqlalchemy.ext.asyncio import ( # noqa: E402
     create_async_engine,
     async_sessionmaker,
     AsyncSession,
 )
-from sqlalchemy import event
+from sqlalchemy import event # noqa: E402
 
-from app.main import app
-from app.models.base import Base
-from app.core.db import get_async_session
+from app.main import app # noqa: E402
+from app.models.base import Base # noqa: E402
+from app.core.db import get_async_session  # noqa: E402
 
 
 DATABASE_URL = "sqlite+aiosqlite:///:memory:"
