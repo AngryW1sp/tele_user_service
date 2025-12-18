@@ -1,3 +1,9 @@
+"""Маршруты для получения цели уведомления по telegram_user_id.
+
+Эндпоинты возвращают структуру `NotifyTarget`, содержащую данные
+для отправки уведомления (telegram_chat_id, timezone, is_active).
+"""
+
 from fastapi import APIRouter, Depends, HTTPException, status
 
 from app.core.auth import require_internal_auth
@@ -17,6 +23,12 @@ async def get_notify_target_by_telegram(
     telegram_user_id: int,
     session: SessionDep,
 ):
+    """Возвращает `NotifyTarget` для указанного `telegram_user_id`.
+
+    Поведения:
+      - 404 если пользователь не найден;
+      - 409 если у пользователя отсутствует `telegram_chat_id`.
+    """
     user = await UserRepository(session).get_by_telegram_user_id(
         telegram_user_id
     )
