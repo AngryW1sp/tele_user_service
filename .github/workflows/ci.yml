@@ -42,7 +42,7 @@ jobs:
         run: poetry config virtualenvs.in-project true
 
       - name: Install dependencies
-        run: poetry install --with test --with dev --no-interaction
+        run: poetry install --with test --with dev --no-interaction --no-root
 
       - name: Run linters (ruff)
         run: poetry run ruff check .
