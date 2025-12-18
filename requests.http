@@ -10,3 +10,22 @@ Content-Type: application/json
 
 ### get by telegram id
 GET http://127.0.0.1:8001/internal/users/by-telegram/123456
+
+### upsert user
+POST http://127.0.0.1:8001/internal/users/upsert-telegram
+Authorization: Bearer super-long-random-string
+Content-Type: application/json
+
+{
+  "telegram_user_id": 123456,
+  "telegram_chat_id": 654321,
+  "timezone": "Europe/Amsterdam"
+}
+
+### get by telegram id
+GET http://127.0.0.1:8001/internal/users/by-telegram/123456
+Authorization: Bearer super-long-random-string
+
+### notify target by telegram id
+GET http://127.0.0.1:8001/internal/notify/by-telegram/123456
+Authorization: Bearer super-long-random-string

@@ -1,10 +1,15 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 
+from app.core.auth import require_internal_auth
 from app.repositories.users import UserRepository
 from app.schemas.users import UserRead, UserCreate
 from app.core.deps import SessionDep
 
-router = APIRouter(prefix="/internal/users", tags=["internal_users"])
+router = APIRouter(
+    prefix="/internal/users",
+    tags=["internal_users"],
+    dependencies=[Depends(require_internal_auth)],
+)
 
 
 @router.post(
