@@ -75,12 +75,6 @@ async def test_notify_target_success_and_conflicts(client):
     data = r2.json()
     assert data["telegram_chat_id"] == 5555
 
-    # create user without chat id (simulate update)
-    payload2 = {
-        "telegram_user_id": 101,
-        "telegram_chat_id": None,
-        "timezone": "UTC",
-    }
     # use repository via upsert-telegram but telegram_chat_id is required by schema, so create via direct post then patch session
     # Instead, create user with chat id then patch DB directly in repository tests; here verify 404 for missing user
     r3 = await client.get("/internal/notify/by-telegram/9999", headers=headers)
