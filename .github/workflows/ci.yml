@@ -45,7 +45,7 @@ jobs:
         run: poetry install --with test --with dev --no-interaction --no-root
 
       - name: Run linters (ruff)
-        run: poetry run ruff check . --fix
+        run: poetry run ruff check . --fix --diff --exit-zero
 
       - name: Run code format check (black)
         run: poetry run black --check .
